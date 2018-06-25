@@ -448,3 +448,6 @@ MonoBehaviour:
   movement_bound_ymin: -4.4
   movement_bound_ymax: 1
   debug: 0
+  laserPrefab: {fileID: 1914064000694318, guid: 2a442ab120cc7fc42ab80e815be154ce,
+    type: 2}
+  relativePositionOfLaser: {x: 0, y: 0.7, z: 0}

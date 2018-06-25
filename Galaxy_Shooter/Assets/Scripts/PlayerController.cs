@@ -18,9 +18,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool debug = false;
 
+    public GameObject laserPrefab;
+    public Vector3 relativePositionOfLaser = Vector3.zero;
+
     // Initialize
     private void Start()
     {
+        // Debug message
         if (debug)
         {
             Debug.Log("[INFO] PlayerController initialized");
@@ -32,6 +36,9 @@ public class PlayerController : MonoBehaviour
     {
         // Control movement
         MovementController();
+
+        // Control laser
+        LaserController();
     }
 
     // MovementController
@@ -62,6 +69,16 @@ public class PlayerController : MonoBehaviour
         else if (transform.position.y > movement_bound_ymax)
         {
             transform.position = new Vector3(transform.position.x, movement_bound_ymax, transform.position.z);
+        }
+    }
+
+    // LaserController
+    private void LaserController()
+    {
+        // Instantiate laser
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(laserPrefab, transform.position + relativePositionOfLaser, Quaternion.identity);
         }
     }
 }

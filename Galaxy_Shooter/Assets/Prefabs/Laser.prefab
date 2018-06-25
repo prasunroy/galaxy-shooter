@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4320140011723652}
   - component: {fileID: 212793619397552718}
+  - component: {fileID: 114831462938201394}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -40,6 +41,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114831462938201394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914064000694318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89c5f42f8163914f99045dc5a147f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  visibleBoundary: 6
+  debug: 0
 --- !u!212 &212793619397552718
 SpriteRenderer:
   m_ObjectHideFlags: 1
