@@ -442,12 +442,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1061c4f6a9c82434d85be261210c009f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement_speed: 10
-  movement_bound_xmin: -8.4
-  movement_bound_xmax: 8.4
-  movement_bound_ymin: -4.4
-  movement_bound_ymax: 1
-  debug: 0
-  laserPrefab: {fileID: 1914064000694318, guid: 2a442ab120cc7fc42ab80e815be154ce,
+  _movementSpeed: 10
+  _movementBound_xmin: -8.4
+  _movementBound_xmax: 8.4
+  _movementBound_ymin: -4.4
+  _movementBound_ymax: 1
+  _debug: 0
+  _laserPrefab: {fileID: 1914064000694318, guid: 2a442ab120cc7fc42ab80e815be154ce,
     type: 2}
-  relativePositionOfLaser: {x: 0, y: 0.7, z: 0}
+  _relativePositionOfLaser: {x: 0, y: 0.7, z: 0}
+  _laserCooldown: 0.2

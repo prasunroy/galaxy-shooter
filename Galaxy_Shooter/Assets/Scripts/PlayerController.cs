@@ -1,31 +1,40 @@
-﻿using System.Collections;
+﻿// Player controller.
+// Created on Sun Jun 24 10:00:00 2018
+// Author: Prasun Roy (https://github.com/prasunroy)
+// GitHub: https://github.com/prasunroy/galaxy-shooter
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Editor variables
     [SerializeField]
-    private float movement_speed = 1.0f;
+    private float _movementSpeed = 1.0f;
     [SerializeField]
-    private float movement_bound_xmin = -5.0f;
+    private float _movementBound_xmin = -5.0f;
     [SerializeField]
-    private float movement_bound_xmax = 5.0f;
+    private float _movementBound_xmax = 5.0f;
     [SerializeField]
-    private float movement_bound_ymin = -5.0f;
+    private float _movementBound_ymin = -5.0f;
     [SerializeField]
-    private float movement_bound_ymax = 5.0f;
+    private float _movementBound_ymax = 5.0f;
     [SerializeField]
-    private bool debug = false;
+    private bool _debug = false;
+    [SerializeField]
+    private GameObject _laserPrefab;
+    [SerializeField]
+    private Vector3 _relativePositionOfLaser = Vector3.zero;
+    [SerializeField]
+    private float _laserCooldown = 0.0f;
 
-    public GameObject laserPrefab;
-    public Vector3 relativePositionOfLaser = Vector3.zero;
+    private float _laserActivationTime = 0.0f;
 
     // Initialize
     private void Start()
     {
         // Debug message
-        if (debug)
+        if (_debug)
         {
             Debug.Log("[INFO] PlayerController initialized");
         }
@@ -49,36 +58,44 @@ public class PlayerController : MonoBehaviour
         float input_yaxis = Input.GetAxis("Vertical");
 
         // Movement in xy plane
-        transform.Translate(Vector3.right * movement_speed * input_xaxis * Time.deltaTime);
-        transform.Translate(Vector3.up * movement_speed * input_yaxis * Time.deltaTime);
+        transform.Translate(Vector3.right * _movementSpeed * input_xaxis * Time.deltaTime);
+        transform.Translate(Vector3.up * _movementSpeed * input_yaxis * Time.deltaTime);
 
         // Movement boundary
-        if (transform.position.x < movement_bound_xmin)
+        if (transform.position.x < _movementBound_xmin)
         {
-            transform.position = new Vector3(movement_bound_xmin, transform.position.y, transform.position.z);
+            transform.position = new Vector3(_movementBound_xmin, transform.position.y, transform.position.z);
         }
-        else if (transform.position.x > movement_bound_xmax)
+        else if (transform.position.x > _movementBound_xmax)
         {
-            transform.position = new Vector3(movement_bound_xmax, transform.position.y, transform.position.z);
+            transform.position = new Vector3(_movementBound_xmax, transform.position.y, transform.position.z);
         }
 
-        if (transform.position.y < movement_bound_ymin)
+        if (transform.position.y < _movementBound_ymin)
         {
-            transform.position = new Vector3(transform.position.x, movement_bound_ymin, transform.position.z);
+            transform.position = new Vector3(transform.position.x, _movementBound_ymin, transform.position.z);
         }
-        else if (transform.position.y > movement_bound_ymax)
+        else if (transform.position.y > _movementBound_ymax)
         {
-            transform.position = new Vector3(transform.position.x, movement_bound_ymax, transform.position.z);
+            transform.position = new Vector3(transform.position.x, _movementBound_ymax, transform.position.z);
         }
     }
 
     // LaserController
     private void LaserController()
     {
-        // Instantiate laser
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Check input
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            Instantiate(laserPrefab, transform.position + relativePositionOfLaser, Quaternion.identity);
+            // Check laser activation time
+            if (Time.time > _laserActivationTime)
+            {
+                // Instantiate laser
+                Instantiate(_laserPrefab, transform.position + _relativePositionOfLaser, Quaternion.identity);
+
+                // Update laser activation time
+                _laserActivationTime = Time.time + _laserCooldown;
+            }
         }
     }
 }
