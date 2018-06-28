@@ -10,6 +10,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private bool _debug = false;
+    [SerializeField]
     private float _movementSpeed = 1.0f;
     [SerializeField]
     private float _movementBound_xmin = -5.0f;
@@ -20,14 +22,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _movementBound_ymax = 5.0f;
     [SerializeField]
-    private bool _debug = false;
-    [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
     private Vector3 _relativePositionOfLaser = Vector3.zero;
     [SerializeField]
+    private GameObject _tripleShotPrefab;
+    public bool tripleShotActive = false;
+    [SerializeField]
     private float _laserCooldown = 0.0f;
-
     private float _laserActivationTime = 0.0f;
 
     // Initialize
@@ -85,14 +87,22 @@ public class PlayerController : MonoBehaviour
     private void LaserController()
     {
         // Check input
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
             // Check laser activation time
             if (Time.time > _laserActivationTime)
             {
+                // Instantiate triple shot
+                if (tripleShotActive)
+                {
+                    Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+                }
                 // Instantiate laser
-                Instantiate(_laserPrefab, transform.position + _relativePositionOfLaser, Quaternion.identity);
-
+                else
+                {
+                    Instantiate(_laserPrefab, transform.position + _relativePositionOfLaser, Quaternion.identity);
+                }
+                
                 // Update laser activation time
                 _laserActivationTime = Time.time + _laserCooldown;
             }
