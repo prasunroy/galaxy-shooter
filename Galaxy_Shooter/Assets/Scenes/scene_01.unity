@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 1076708087}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -453,10 +453,11 @@ MonoBehaviour:
   _laserPrefab: {fileID: 1914064000694318, guid: 2a442ab120cc7fc42ab80e815be154ce,
     type: 2}
   _relativePositionOfLaser: {x: 0, y: 0.7, z: 0}
+  _laserCooldown: 0.2
   _tripleShotPrefab: {fileID: 1608660287380550, guid: 0e6b3f0ceb563bc45af2deec1815867d,
     type: 2}
+  _tripleShotCooldown: 10
   tripleShotActive: 0
-  _laserCooldown: 0.2
 --- !u!50 &1076708087
 Rigidbody2D:
   serializedVersion: 4

@@ -34,6 +34,21 @@ public class PowerUpController : MonoBehaviour
     // Triggered collision
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // ACTION
+        // Check whether collision with player
+        if (other.tag == "Player")
+        {
+            // Get player reference
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            
+            // Check player reference
+            if (playerController != null)
+            {
+                // Control power up
+                playerController.PowerUpController();
+            }
+            
+            // Destroy power up
+            Destroy(gameObject);
+        }
     }
 }

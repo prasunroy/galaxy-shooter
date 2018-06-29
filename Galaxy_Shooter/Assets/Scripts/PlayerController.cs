@@ -26,11 +26,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Vector3 _relativePositionOfLaser = Vector3.zero;
     [SerializeField]
-    private GameObject _tripleShotPrefab;
-    public bool tripleShotActive = false;
-    [SerializeField]
     private float _laserCooldown = 0.0f;
     private float _laserActivationTime = 0.0f;
+    [SerializeField]
+    private GameObject _tripleShotPrefab;
+    [SerializeField]
+    private float _tripleShotCooldown = 0.0f;
+    public bool tripleShotActive = false;
 
     // Initialize
     private void Start()
@@ -72,7 +74,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(_movementBound_xmax, transform.position.y, transform.position.z);
         }
-
         if (transform.position.y < _movementBound_ymin)
         {
             transform.position = new Vector3(transform.position.x, _movementBound_ymin, transform.position.z);
@@ -107,5 +108,24 @@ public class PlayerController : MonoBehaviour
                 _laserActivationTime = Time.time + _laserCooldown;
             }
         }
+    }
+
+    // PowerUpController
+    public void PowerUpController()
+    {
+        // Enable power up
+        tripleShotActive = true;
+
+        // Start power up cooldown coroutine
+        StartCoroutine(PowerUpCooldown());
+    }
+
+    private IEnumerator PowerUpCooldown()
+    {
+        // Wait for cooldown
+        yield return new WaitForSeconds(_tripleShotCooldown);
+
+        // Disable power up
+        tripleShotActive = false;
     }
 }
