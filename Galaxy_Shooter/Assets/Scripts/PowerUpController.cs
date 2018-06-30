@@ -12,7 +12,11 @@ public class PowerUpController : MonoBehaviour
     [SerializeField]
     private bool _debug = false;
     [SerializeField]
+    private int _powerUpID = 0; // 0 = None, 1 = TripleShot, 2 = Speed, 3 = Shield
+    [SerializeField]
     private float _speed = 1.0f;
+    [SerializeField]
+    private float _visibleBoundary = -10.0f;
 
     // Initialize
     void Start ()
@@ -29,6 +33,12 @@ public class PowerUpController : MonoBehaviour
     {
         // Move power up
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+
+        // Destroy power up if out of visible boundary
+        if (transform.position.y < _visibleBoundary)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Triggered collision
@@ -44,7 +54,7 @@ public class PowerUpController : MonoBehaviour
             if (playerController != null)
             {
                 // Control power up
-                playerController.PowerUpController();
+                playerController.PowerUpController(_powerUpID);
             }
             
             // Destroy power up

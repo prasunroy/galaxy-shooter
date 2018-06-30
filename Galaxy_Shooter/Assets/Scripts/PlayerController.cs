@@ -32,7 +32,15 @@ public class PlayerController : MonoBehaviour
     private GameObject _tripleShotPrefab;
     [SerializeField]
     private float _tripleShotCooldown = 0.0f;
-    public bool tripleShotActive = false;
+    private bool _tripleShotActive = false;
+    [SerializeField]
+    private float _speedMultiplier = 1.0f;
+    [SerializeField]
+    private float _speedCooldown = 0.0f;
+    private bool _speedActive = false;
+    [SerializeField]
+    private float _shieldCooldown = 0.0f;
+    private bool _shieldActive = false;
 
     // Initialize
     private void Start()
@@ -62,8 +70,18 @@ public class PlayerController : MonoBehaviour
         float input_yaxis = Input.GetAxis("Vertical");
 
         // Movement in xy plane
-        transform.Translate(Vector3.right * _movementSpeed * input_xaxis * Time.deltaTime);
-        transform.Translate(Vector3.up * _movementSpeed * input_yaxis * Time.deltaTime);
+        // Speed boost
+        if (_speedActive)
+        {
+            transform.Translate(Vector3.right * _movementSpeed * _speedMultiplier * input_xaxis * Time.deltaTime);
+            transform.Translate(Vector3.up * _movementSpeed * _speedMultiplier * input_yaxis * Time.deltaTime);
+        }
+        // Speed normal
+        else
+        {
+            transform.Translate(Vector3.right * _movementSpeed * input_xaxis * Time.deltaTime);
+            transform.Translate(Vector3.up * _movementSpeed * input_yaxis * Time.deltaTime);
+        }
 
         // Movement boundary
         if (transform.position.x < _movementBound_xmin)
@@ -94,7 +112,7 @@ public class PlayerController : MonoBehaviour
             if (Time.time > _laserActivationTime)
             {
                 // Instantiate triple shot
-                if (tripleShotActive)
+                if (_tripleShotActive)
                 {
                     Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
                 }
@@ -111,21 +129,51 @@ public class PlayerController : MonoBehaviour
     }
 
     // PowerUpController
-    public void PowerUpController()
+    public void PowerUpController(int powerUpID = 0)
     {
         // Enable power up
-        tripleShotActive = true;
+        // 0 = None, 1 = TripleShot, 2 = Speed, 3 = Shield
+        switch (powerUpID)
+        {
+            case 1:
+                _tripleShotActive = true;
+                break;
+            case 2:
+                _speedActive = true;
+                break;
+            case 3:
+                _shieldActive = true;
+                break;
+            default:
+                break;
+        }
 
         // Start power up cooldown coroutine
-        StartCoroutine(PowerUpCooldown());
+        StartCoroutine(PowerUpCooldown(powerUpID));
     }
 
-    private IEnumerator PowerUpCooldown()
+    // PowerUpCooldown coroutine
+    private IEnumerator PowerUpCooldown(int powerUpID = 0)
     {
         // Wait for cooldown
-        yield return new WaitForSeconds(_tripleShotCooldown);
-
         // Disable power up
-        tripleShotActive = false;
+        // 0 = None, 1 = TripleShot, 2 = Speed, 3 = Shield
+        switch (powerUpID)
+        {
+            case 1:
+                yield return new WaitForSeconds(_tripleShotCooldown);
+                _tripleShotActive = false;
+                break;
+            case 2:
+                yield return new WaitForSeconds(_speedCooldown);
+                _speedActive = false;
+                break;
+            case 3:
+                yield return new WaitForSeconds(_shieldCooldown);
+                _shieldActive = false;
+                break;
+            default:
+                break;
+        }
     }
 }
