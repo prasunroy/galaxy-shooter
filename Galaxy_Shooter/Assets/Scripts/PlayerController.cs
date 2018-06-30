@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _shieldCooldown = 0.0f;
     private bool _shieldActive = false;
+    public int playerLives = 1;
 
     // Initialize
     private void Start()
@@ -92,6 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(_movementBound_xmax, transform.position.y, transform.position.z);
         }
+
         if (transform.position.y < _movementBound_ymin)
         {
             transform.position = new Vector3(transform.position.x, _movementBound_ymin, transform.position.z);
