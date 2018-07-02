@@ -29,7 +29,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float _spawnOffsetY = 0.0f;
     [SerializeField]
-    private int enemyLives = 1;
+    private int _enemyLives = 1;
+    [SerializeField]
+    private GameObject _enemyDestroyedPrefab;
+    [SerializeField]
+    private GameObject _explosionPrefab;
 
     // Initialize
     void Start ()
@@ -71,7 +75,6 @@ public class EnemyController : MonoBehaviour
             float x = Random.Range(_visibleBoundary_xmin + _spawnOffsetX, _visibleBoundary_xmax - _spawnOffsetX);
             float y = _visibleBoundary_ymax + _spawnOffsetY;
             float z = transform.position.z;
-
             transform.position = new Vector3(x, y, z);
             SpeedController();
         }
@@ -93,13 +96,15 @@ public class EnemyController : MonoBehaviour
                 playerController.playerLives -= 1;
                 if (playerController.playerLives <= 0)
                 {
+                    Instantiate(_explosionPrefab, other.transform.position, Quaternion.identity);
                     Destroy(other.gameObject);
                 }
 
                 // Damage enemy
-                enemyLives -= 1;
-                if (enemyLives <= 0)
+                _enemyLives -= 1;
+                if (_enemyLives <= 0)
                 {
+                    Instantiate(_enemyDestroyedPrefab, transform.position, Quaternion.identity);
                     Destroy(gameObject);
                 }
             }
@@ -111,9 +116,10 @@ public class EnemyController : MonoBehaviour
             Destroy(other.gameObject);
 
             // Damage enemy
-            enemyLives -= 1;
-            if (enemyLives <= 0)
+            _enemyLives -= 1;
+            if (_enemyLives <= 0)
             {
+                Instantiate(_enemyDestroyedPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

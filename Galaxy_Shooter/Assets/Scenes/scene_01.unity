@@ -462,6 +462,16 @@ Prefab:
       propertyPath: playerLives
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
+        type: 2}
+      propertyPath: _debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
+        type: 2}
+      propertyPath: _shieldCooldown
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da3c7de13e763034497db0e9527d4b99, type: 2}
   m_IsPrefabParent: 0
@@ -542,6 +552,23 @@ Prefab:
     - target: {fileID: 114193871956567704, guid: 1fe87ba9c73004d408f47c776e311647,
         type: 2}
       propertyPath: enemyLives
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193871956567704, guid: 1fe87ba9c73004d408f47c776e311647,
+        type: 2}
+      propertyPath: _enemyDestroyedPrefab
+      value: 
+      objectReference: {fileID: 1617627328734104, guid: b75766dccb0ce8043b3c49d1d3d443e4,
+        type: 2}
+    - target: {fileID: 114193871956567704, guid: 1fe87ba9c73004d408f47c776e311647,
+        type: 2}
+      propertyPath: _explosionPrefab
+      value: 
+      objectReference: {fileID: 1209514681906032, guid: 7b3ce5814bbf4384dac445a562445d98,
+        type: 2}
+    - target: {fileID: 114193871956567704, guid: 1fe87ba9c73004d408f47c776e311647,
+        type: 2}
+      propertyPath: _enemyLives
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
