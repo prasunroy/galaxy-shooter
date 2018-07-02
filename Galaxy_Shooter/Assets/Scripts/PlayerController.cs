@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case 3:
                 _shieldActive = true;
+                _shieldPrefab.SetActive(true);
                 break;
             default:
                 break;
@@ -179,6 +180,7 @@ public class PlayerController : MonoBehaviour
             case 3:
                 yield return new WaitForSeconds(_shieldCooldown);
                 _shieldActive = false;
+                _shieldPrefab.SetActive(false);
                 break;
             default:
                 break;
@@ -192,12 +194,14 @@ public class PlayerController : MonoBehaviour
         if (_shieldActive)
         {
             _shieldActive = false;
+            _shieldPrefab.SetActive(false);
         }
         // Damage player if shield is disabled
         else
         {
             _playerLives -= damage;
         }
+
         if (_playerLives <= 0)
         {
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
