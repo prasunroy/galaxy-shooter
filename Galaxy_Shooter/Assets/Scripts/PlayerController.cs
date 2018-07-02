@@ -24,24 +24,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject _laserPrefab;
     [SerializeField]
-    private Vector3 _relativePositionOfLaser = Vector3.zero;
-    [SerializeField]
     private float _laserCooldown = 0.0f;
     private float _laserActivationTime = 0.0f;
     [SerializeField]
     private GameObject _tripleShotPrefab;
     [SerializeField]
     private float _tripleShotCooldown = 0.0f;
+    [SerializeField]
     private bool _tripleShotActive = false;
     [SerializeField]
     private float _speedMultiplier = 1.0f;
     [SerializeField]
     private float _speedCooldown = 0.0f;
+    [SerializeField]
     private bool _speedActive = false;
     [SerializeField]
+    private GameObject _shieldPrefab;
+    [SerializeField]
     private float _shieldCooldown = 0.0f;
+    [SerializeField]
     private bool _shieldActive = false;
-    public int playerLives = 1;
+    [SerializeField]
+    private int _playerLives = 1;
+    [SerializeField]
+    private GameObject _explosionPrefab;
 
     // Initialize
     private void Start()
@@ -121,7 +127,7 @@ public class PlayerController : MonoBehaviour
                 // Instantiate laser
                 else
                 {
-                    Instantiate(_laserPrefab, transform.position + _relativePositionOfLaser, Quaternion.identity);
+                    Instantiate(_laserPrefab, transform.position, Quaternion.identity);
                 }
                 
                 // Update laser activation time
@@ -176,6 +182,26 @@ public class PlayerController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    // DamagePlayer
+    public void DamagePlayer(int damage = 0)
+    {
+        // Disable shield if enabled
+        if (_shieldActive)
+        {
+            _shieldActive = false;
+        }
+        // Damage player if shield is disabled
+        else
+        {
+            _playerLives -= damage;
+        }
+        if (_playerLives <= 0)
+        {
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }

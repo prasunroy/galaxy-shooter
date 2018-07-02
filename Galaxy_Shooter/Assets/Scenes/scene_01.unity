@@ -424,12 +424,12 @@ Prefab:
         type: 2}
       propertyPath: _laserPrefab
       value: 
-      objectReference: {fileID: 1914064000694318, guid: 2a442ab120cc7fc42ab80e815be154ce,
+      objectReference: {fileID: 1397734989972908, guid: 3c91f17cfb2433c43bf7a9881f16d3d1,
         type: 2}
     - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
         type: 2}
       propertyPath: _relativePositionOfLaser.y
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
         type: 2}
@@ -469,9 +469,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
         type: 2}
-      propertyPath: _shieldCooldown
+      propertyPath: _tripleShotActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
+        type: 2}
+      propertyPath: _speedActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
+        type: 2}
+      propertyPath: _shieldCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
+        type: 2}
+      propertyPath: _shieldActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
+        type: 2}
+      propertyPath: _playerLives
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114377979079740518, guid: da3c7de13e763034497db0e9527d4b99,
+        type: 2}
+      propertyPath: _explosionPrefab
+      value: 
+      objectReference: {fileID: 1209514681906032, guid: 7b3ce5814bbf4384dac445a562445d98,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da3c7de13e763034497db0e9527d4b99, type: 2}
   m_IsPrefabParent: 0
@@ -569,6 +595,16 @@ Prefab:
     - target: {fileID: 114193871956567704, guid: 1fe87ba9c73004d408f47c776e311647,
         type: 2}
       propertyPath: _enemyLives
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193871956567704, guid: 1fe87ba9c73004d408f47c776e311647,
+        type: 2}
+      propertyPath: _damageToPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193871956567704, guid: 1fe87ba9c73004d408f47c776e311647,
+        type: 2}
+      propertyPath: _damageToEnemy
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

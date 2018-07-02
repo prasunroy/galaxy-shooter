@@ -31,9 +31,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private int _enemyLives = 1;
     [SerializeField]
-    private GameObject _enemyDestroyedPrefab;
+    private int _damageToPlayer = 1;
     [SerializeField]
-    private GameObject _explosionPrefab;
+    private int _damageToEnemy = 1;
+    [SerializeField]
+    private GameObject _enemyDestroyedPrefab;
 
     // Initialize
     void Start ()
@@ -93,20 +95,10 @@ public class EnemyController : MonoBehaviour
             if (playerController != null)
             {
                 // Damage player
-                playerController.playerLives -= 1;
-                if (playerController.playerLives <= 0)
-                {
-                    Instantiate(_explosionPrefab, other.transform.position, Quaternion.identity);
-                    Destroy(other.gameObject);
-                }
+                playerController.DamagePlayer(_damageToPlayer);
 
                 // Damage enemy
-                _enemyLives -= 1;
-                if (_enemyLives <= 0)
-                {
-                    Instantiate(_enemyDestroyedPrefab, transform.position, Quaternion.identity);
-                    Destroy(gameObject);
-                }
+                DamageEnemy(_damageToEnemy);
             }
         }
         // Collision with laser
@@ -116,12 +108,18 @@ public class EnemyController : MonoBehaviour
             Destroy(other.gameObject);
 
             // Damage enemy
-            _enemyLives -= 1;
-            if (_enemyLives <= 0)
-            {
-                Instantiate(_enemyDestroyedPrefab, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
+            DamageEnemy(_damageToEnemy);
+        }
+    }
+
+    // DamageEnemy
+    public void DamageEnemy(int damage = 0)
+    {
+        _enemyLives -= damage;
+        if (_enemyLives <= 0)
+        {
+            Instantiate(_enemyDestroyedPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
