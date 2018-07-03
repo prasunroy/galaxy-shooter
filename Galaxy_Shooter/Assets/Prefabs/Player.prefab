@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4157650534274364
 Transform:
   m_ObjectHideFlags: 1
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018142961556392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4553074310936972}
@@ -149,24 +149,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
-  _movementSpeed: 1
-  _movementBound_xmin: -5
-  _movementBound_xmax: 5
-  _movementBound_ymin: -5
-  _movementBound_ymax: 5
-  _laserPrefab: {fileID: 0}
-  _laserCooldown: 0
-  _tripleShotPrefab: {fileID: 0}
-  _tripleShotCooldown: 0
+  _movementSpeed: 10
+  _movementBound_xmin: -8.4
+  _movementBound_xmax: 8.4
+  _movementBound_ymin: -4.4
+  _movementBound_ymax: 4.4
+  _laserPrefab: {fileID: 1397734989972908, guid: 3c91f17cfb2433c43bf7a9881f16d3d1,
+    type: 2}
+  _laserCooldown: 0.2
+  _tripleShotPrefab: {fileID: 1608660287380550, guid: 0e6b3f0ceb563bc45af2deec1815867d,
+    type: 2}
+  _tripleShotCooldown: 10
   _tripleShotActive: 0
-  _speedMultiplier: 1
-  _speedCooldown: 0
+  _speedMultiplier: 2
+  _speedCooldown: 10
   _speedActive: 0
-  _shieldPrefab: {fileID: 0}
-  _shieldCooldown: 0
+  _shieldPrefab: {fileID: 1206419601621800}
+  _shieldCooldown: 10
   _shieldActive: 0
-  _playerLives: 1
-  _explosionPrefab: {fileID: 0}
+  _playerLives: 3
+  _explosionPrefab: {fileID: 1209514681906032, guid: 7b3ce5814bbf4384dac445a562445d98,
+    type: 2}
 --- !u!212 &212721847072141358
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1869018911377344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,14 +80,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _debug: 0
   _minimumMovementSpeed: 1
-  _maximumMovementSpeed: 1
-  _visibleBoundary_xmin: -5
-  _visibleBoundary_xmax: 5
-  _visibleBoundary_ymin: -5
-  _visibleBoundary_ymax: 5
-  _spawnOffsetX: 0
+  _maximumMovementSpeed: 5
+  _visibleBoundary_xmin: -10
+  _visibleBoundary_xmax: 10
+  _visibleBoundary_ymin: -6
+  _visibleBoundary_ymax: 6
+  _spawnOffsetX: 2
   _spawnOffsetY: 0
-  enemyLives: 1
+  _enemyLives: 1
+  _damageToPlayer: 1
+  _damageToEnemy: 1
+  _enemyDestroyedPrefab: {fileID: 1617627328734104, guid: b75766dccb0ce8043b3c49d1d3d443e4,
+    type: 2}
 --- !u!212 &212534886310274102
 SpriteRenderer:
   m_ObjectHideFlags: 1
