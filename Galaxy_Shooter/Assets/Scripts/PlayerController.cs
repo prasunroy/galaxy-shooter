@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private int _playerLives = 1;
     [SerializeField]
     private GameObject _explosionPrefab;
+    private UIController _uiController;
 
     // Initialize
     private void Start()
@@ -56,6 +57,14 @@ public class PlayerController : MonoBehaviour
         if (_debug)
         {
             Debug.Log("[INFO] PlayerController initialized");
+        }
+
+        // Get UI controller reference and update player lives
+        _uiController = GameObject.Find("UI").GetComponent<UIController>();
+
+        if (_uiController != null)
+        {
+            _uiController.UpdatePlayerLives(_playerLives);
         }
     }
     
@@ -200,6 +209,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             _playerLives -= damage;
+            _uiController.UpdatePlayerLives(_playerLives);
         }
 
         if (_playerLives <= 0)

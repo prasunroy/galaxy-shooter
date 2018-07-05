@@ -90,6 +90,7 @@ MonoBehaviour:
   _enemyLives: 1
   _damageToPlayer: 1
   _damageToEnemy: 1
+  _awardToPlayer: 10
   _enemyDestroyedPrefab: {fileID: 1617627328734104, guid: b75766dccb0ce8043b3c49d1d3d443e4,
     type: 2}
 --- !u!212 &212534886310274102

@@ -35,7 +35,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private int _damageToEnemy = 1;
     [SerializeField]
+    private int _awardToPlayer = 1;
+    [SerializeField]
     private GameObject _enemyDestroyedPrefab;
+    private UIController _uiController;
 
     // Initialize
     void Start ()
@@ -46,6 +49,9 @@ public class EnemyController : MonoBehaviour
             Debug.Log("[INFO] EnemyController initialized");
         }
 
+        // Get UI controller reference
+        _uiController = GameObject.Find("UI").GetComponent<UIController>();
+        
         // Control speed
         SpeedController();
     }
@@ -118,6 +124,10 @@ public class EnemyController : MonoBehaviour
         _enemyLives -= damage;
         if (_enemyLives <= 0)
         {
+            if (_uiController != null)
+            {
+                _uiController.UpdatePlayerScore(_awardToPlayer);
+            }
             Instantiate(_enemyDestroyedPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
