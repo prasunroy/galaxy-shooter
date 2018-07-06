@@ -13,11 +13,14 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private bool _debug = false;
     [SerializeField]
+    private Image _mainMenuImage;
+    [SerializeField]
     private Sprite[] _playerLivesSprites;
     [SerializeField]
     private Image _playerLivesImage;
     [SerializeField]
     private Text _playerScoreText;
+
     private int _playerScoreTotal;
 
     // Initialize
@@ -30,6 +33,12 @@ public class UIController : MonoBehaviour
         }
     }
 
+    // Display main menu
+    public void DisplayMainMenu(bool visible = true)
+    {
+        _mainMenuImage.enabled = visible;
+    }
+
     // Update player lives
     public void UpdatePlayerLives(int lives)
     {
@@ -40,6 +49,13 @@ public class UIController : MonoBehaviour
     public void UpdatePlayerScore(int score)
     {
         _playerScoreTotal += score;
+        _playerScoreText.text = "SCORE = " + _playerScoreTotal;
+    }
+
+    // Reset player score
+    public void ResetPlayerScore(int score = 0)
+    {
+        _playerScoreTotal = score;
         _playerScoreText.text = "SCORE = " + _playerScoreTotal;
     }
 }

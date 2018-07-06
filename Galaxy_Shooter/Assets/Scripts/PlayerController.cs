@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject _explosionPrefab;
     private UIController _uiController;
+    private GameController _gameController;
 
     // Initialize
     private void Start()
@@ -66,8 +67,11 @@ public class PlayerController : MonoBehaviour
         {
             _uiController.UpdatePlayerLives(_playerLives);
         }
+
+        // Get game controller reference
+        _gameController = GameObject.Find("GameManager").GetComponent<GameController>();
     }
-    
+
     // Update
     private void Update()
     {
@@ -209,13 +213,27 @@ public class PlayerController : MonoBehaviour
         else
         {
             _playerLives -= damage;
-            _uiController.UpdatePlayerLives(_playerLives);
+            if (_uiController != null)
+            {
+                _uiController.UpdatePlayerLives(_playerLives);
+            }
         }
 
+        // Destroy player if out of lives and update UI and game state
         if (_playerLives <= 0)
         {
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+
+            if (_uiController != null)
+            {
+                _uiController.DisplayMainMenu(true);
+            }
+
+            if (_gameController != null)
+            {
+                _gameController.gameOver = true;
+            }
         }
     }
 }
