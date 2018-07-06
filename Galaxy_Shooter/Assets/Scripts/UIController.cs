@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
     private Image _playerLivesImage;
     [SerializeField]
     private Text _playerScoreText;
-
+    [SerializeField]
     private int _playerScoreTotal;
 
     // Initialize

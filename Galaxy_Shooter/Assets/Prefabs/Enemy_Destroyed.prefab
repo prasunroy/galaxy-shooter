@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4274863003191212}
   - component: {fileID: 95949023787340070}
   - component: {fileID: 212093673231619224}
+  - component: {fileID: 114272964742047782}
   m_Layer: 0
   m_Name: Enemy_Destroyed
   m_TagString: Untagged
@@ -59,6 +60,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114272964742047782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617627328734104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0dc049b7818ab4a9603930d4135035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debug: 0
+  _destroyAfter: 5
 --- !u!212 &212093673231619224
 SpriteRenderer:
   m_ObjectHideFlags: 1

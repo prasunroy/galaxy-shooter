@@ -35,6 +35,7 @@ public class SpawnController : MonoBehaviour
     private float _powerUpSpawnOffsetX = 0.0f;
     [SerializeField]
     private float _powerUpSpawnOffsetY = 0.0f;
+    private GameController _gameController;
 
     // Initialize
     void Start()
@@ -45,17 +46,27 @@ public class SpawnController : MonoBehaviour
             Debug.Log("[INFO] SpawnController initialized");
         }
 
-        // Start enemy spawn controller coroutine
-        StartCoroutine(EnemySpawn());
+        // Get game controller reference
+        _gameController = GameObject.Find("GameManager").GetComponent<GameController>();
+    }
 
-        // Start power up spawn controller coroutine
-        StartCoroutine(PowerUpSpawn());
+    // Start spawn controller coroutines
+    public void StartSpawnControllerCoroutines()
+    {
+        if (_gameController != null)
+        {
+            // Start enemy spawn controller coroutine
+            StartCoroutine(EnemySpawn());
+
+            // Start power up spawn controller coroutine
+            StartCoroutine(PowerUpSpawn());
+        }
     }
     
     // EnemySpawn coroutine
     private IEnumerator EnemySpawn()
     {
-        while (true)
+        while (!_gameController.gameOver)
         {
             yield return new WaitForSeconds(_enemySpawnDelay);
 
@@ -70,7 +81,7 @@ public class SpawnController : MonoBehaviour
     // PowerUpSpawn coroutine
     private IEnumerator PowerUpSpawn()
     {
-        while (true)
+        while (!_gameController.gameOver)
         {
             yield return new WaitForSeconds(_powerUpSpawnDelay);
 

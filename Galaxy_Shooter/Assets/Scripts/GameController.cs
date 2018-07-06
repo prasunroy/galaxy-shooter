@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private int _playerScoreOnStart = 0;
     private UIController _uiController;
+    private SpawnController _spawnController;
 
     // Initialize
     void Start ()
@@ -31,6 +32,9 @@ public class GameController : MonoBehaviour
 
         // Get UI controller reference
         _uiController = GameObject.Find("UI").GetComponent<UIController>();
+
+        // Get spawn controller reference
+        _spawnController = GameObject.Find("GameManager").GetComponent<SpawnController>();
     }
 	
 	// Update
@@ -47,11 +51,17 @@ public class GameController : MonoBehaviour
                 _uiController.ResetPlayerScore(_playerScoreOnStart);
             }
 
+            // Set game state flag
+            gameOver = false;
+
             // Instantiate player
             Instantiate(_playerPrefab, Vector3.zero, Quaternion.identity);
 
-            // Set game state flag
-            gameOver = false;
+            // Start spawn controller coroutines
+            if (_spawnController != null)
+            {
+                _spawnController.StartSpawnControllerCoroutines();
+            }
         }
 	}
 }
