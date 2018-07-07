@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private GameObject _explosionPrefab;
     private UIController _uiController;
     private GameController _gameController;
+    private AudioSource _audioSource;
 
     // Initialize
     private void Start()
@@ -70,6 +71,9 @@ public class PlayerController : MonoBehaviour
 
         // Get game controller reference
         _gameController = GameObject.Find("GameManager").GetComponent<GameController>();
+
+        // Get audio source reference
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update
@@ -145,6 +149,12 @@ public class PlayerController : MonoBehaviour
                 
                 // Update laser activation time
                 _laserActivationTime = Time.time + _laserCooldown;
+
+                // Play laser sound effect
+                if (_audioSource != null)
+                {
+                    _audioSource.Play();
+                }
             }
         }
     }

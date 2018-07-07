@@ -13,6 +13,7 @@ public class ExplosionController : MonoBehaviour
     private bool _debug = false;
     [SerializeField]
     private float _destroyAfter = 0.0f;
+    private AudioSource _audioSource;
 
     // Initialize
     void Start ()
@@ -23,6 +24,15 @@ public class ExplosionController : MonoBehaviour
             Debug.Log("[INFO] ExplosionController initialized");
         }
 
+        // Get audio source reference
+        _audioSource = GetComponent<AudioSource>();
+
+        // Play explosion sound effect
+        if (_audioSource != null)
+        {
+            _audioSource.Play();
+        }
+        
         // Destroy after a delay
         Destroy(gameObject, _destroyAfter);
 	}

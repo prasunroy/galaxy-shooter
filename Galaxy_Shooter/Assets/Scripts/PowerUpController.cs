@@ -17,6 +17,8 @@ public class PowerUpController : MonoBehaviour
     private float _speed = 1.0f;
     [SerializeField]
     private float _visibleBoundary = -10.0f;
+    [SerializeField]
+    private AudioClip _audioClip;
 
     // Initialize
     void Start ()
@@ -49,12 +51,17 @@ public class PowerUpController : MonoBehaviour
         {
             // Get player reference
             PlayerController playerController = other.GetComponent<PlayerController>();
-            
-            // Check player reference
+
+            // Control power up
             if (playerController != null)
             {
-                // Control power up
                 playerController.PowerUpController(_powerUpID);
+            }
+
+            // Play audio clip
+            if (_audioClip != null)
+            {
+                AudioSource.PlayClipAtPoint(_audioClip, Camera.main.transform.position);
             }
             
             // Destroy power up
