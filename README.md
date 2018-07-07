@@ -4,6 +4,22 @@
 ![badge](https://github.com/prasunroy/galaxy-shooter/blob/master/assets/badge_1.svg)
 ![badge](https://github.com/prasunroy/galaxy-shooter/blob/master/assets/badge_2.svg)
 
+## Play Game
+<p align='center'>
+  <a href='https://prasunroy.github.io/galaxy-shooter'>
+    <img height='200' src='https://github.com/prasunroy/galaxy-shooter/blob/master/assets/image.png' />
+  </a>
+  <br />
+  <a href='https://prasunroy.github.io/galaxy-shooter'>
+    <b>PLAY GAME</b>
+  </a>
+</p>
+
+## References
+>[Logo](https://github.com/prasunroy/galaxy-shooter/blob/master/assets/logo.png) and [Image](https://github.com/prasunroy/galaxy-shooter/blob/master/assets/image.png) are obtained from [Pixabay](https://pixabay.com) made available under [Creative Commons CC0 License](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
+
+>This game is based on the [Udemy course](https://www.udemy.com/the-ultimate-guide-to-game-development-with-unity) by [Jonathan Weinberger](https://www.udemy.com/user/jonathan-weinberger).
+
 ## License
 MIT License
 
