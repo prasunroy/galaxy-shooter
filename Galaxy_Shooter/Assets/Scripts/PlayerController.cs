@@ -47,6 +47,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int _playerLives = 1;
     [SerializeField]
+    private GameObject _failedEngineLeft;
+    [SerializeField]
+    private GameObject _failedEngineRight;
+    [SerializeField]
     private GameObject _explosionPrefab;
     private UIController _uiController;
     private GameController _gameController;
@@ -222,10 +226,21 @@ public class PlayerController : MonoBehaviour
         // Damage player if shield is disabled
         else
         {
+            // Update player lives
             _playerLives -= damage;
             if (_uiController != null)
             {
                 _uiController.UpdatePlayerLives(_playerLives);
+            }
+
+            // Enable engine failure animations
+            if (_playerLives == 2)
+            {
+                _failedEngineLeft.SetActive(true);
+            }
+            else if (_playerLives == 1)
+            {
+                _failedEngineRight.SetActive(true);
             }
         }
 
