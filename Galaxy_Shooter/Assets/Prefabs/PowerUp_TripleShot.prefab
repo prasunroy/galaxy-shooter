@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4474946838985030}
   - component: {fileID: 212194039518838010}
+  - component: {fileID: 95980726487147722}
   - component: {fileID: 58123585041195810}
   - component: {fileID: 114459759183465882}
   m_Layer: 0
@@ -57,6 +58,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
   m_Radius: 1
+--- !u!95 &95980726487147722
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1287539441048174}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c17305769ceb50b47be275f4a064c512, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114459759183465882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +91,7 @@ MonoBehaviour:
   _powerUpID: 1
   _speed: 1
   _visibleBoundary: -6
+  _audioClip: {fileID: 8300000, guid: 6e9d67d796016eb46a175f4cda86977e, type: 3}
 --- !u!212 &212194039518838010
 SpriteRenderer:
   m_ObjectHideFlags: 1
