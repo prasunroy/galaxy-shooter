@@ -4,7 +4,7 @@
 ![badge](https://github.com/prasunroy/galaxy-shooter/blob/master/assets/badge_1.svg)
 ![badge](https://github.com/prasunroy/galaxy-shooter/blob/master/assets/badge_2.svg)
 
-## Play Game
+## Play
 <p align='center'>
   <a href='https://prasunroy.github.io/galaxy-shooter'>
     <img height='200' src='https://github.com/prasunroy/galaxy-shooter/blob/master/assets/image.png' />
